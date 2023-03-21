@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets//img/festival.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <link rel="stylesheet" href="./assets/styles/footer.css">
+    <link rel="stylesheet" href="./assets/styles/details.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Details</title>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            <header class="header">
+                <nav>
+                    <img src="./assets/img/Logo_Amazing_Events.png" alt="logo">
+                    <div :class="showMenu ? 'show' : 'hidden'">
+                        <a href="./index.html">Home</a>
+                        <a href="./upcomingEvents.html">Upcoming
+                            Events</a>
+                        <a href="./pastEvents.html">Past Events</a>
+                        <a href="./contact.html">Contact</a>
+                        <a href="./stats.html">Stats</a>
+                    </div>
+                    <button class="burguer" v-on:click="changeMenu()">
+                        <img src="./assets/img/menu.jpg" alt="">
+                    </button>
+            </header>
+            <template v-if="loading">
+                <div class="loading">
+                    <div></div>
+                </div>
+            </template>
+            <template v-else>
+                <div>
+                    <div class="card">
+                        <img v-bind:src="event.image" :alt="event.name +'image'">
+                        <div class="cardInfo">
+                            <h2>{{event.name}}</h2>
+                            <p>{{event.assistance ? 'Assistances: ' + event.assistance : 'Estimate: ' + event.estimate}}
+                            </p>
+                            <p>Capacity: {{event.capacity}}</p>
+                            <p>Category: {{event.category}}</p>
+                            <p>Date: {{event.date}}</p>
+                            <p>Place: {{event.place}}</p>
+                            <p>Price: ${{event.price}}</p>
+                            <p>{{event.description}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </template>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="icons">
+                <img src="./assets/img/instagram.png" class="icon" alt="logo">
+                <img src="./assets/img/facebook.png" class="icon" alt="logo">
+                <img src="./assets/img/whatsapp.png" class="icon" alt="logo">
+            </div>
+            <h2>Cohort</h2>
+        </div>
+    </footer>
+    <script src="./assets/scripts/details.js"></script>
+</body>
+
+</html>

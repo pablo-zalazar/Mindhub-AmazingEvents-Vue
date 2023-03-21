@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets//img/festival.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <link rel="stylesheet" href="./assets/styles/footer.css">
+    <link rel="stylesheet" href="./assets/styles/stats.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Stats</title>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            <header class="header">
+                <nav>
+                    <img src="./assets/img/Logo_Amazing_Events.png" alt="logo">
+                    <div :class="showMenu ? 'show' : 'hidden'">
+                        <a href="./index.html">Home</a>
+                        <a href="./upcomingEvents.html">Upcoming
+                            Events</a>
+                        <a href="./pastEvents.html">Past Events</a>
+                        <a href="./contact.html">Contact</a>
+                        <a class="active" href="#">Stats</a>
+                    </div>
+                    <button class="burguer" v-on:click="changeMenu()">
+                        <img src="./assets/img/menu.jpg" alt="">
+                    </button>
+            </header>
+            <div class="tables">
+                <template v-if="loading">
+                    <div class="loading">
+                        <div></div>
+                    </div>
+                </template>
+                <template v-else>
+                    <table>
+                        <caption>Events statistics</caption>
+                        <thead>
+                            <tr>
+                                <th>Events with highest percentage of attendance</th>
+                                <th>Events with lowest percentage of attendance</th>
+                                <th>Events with larger capacity</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table1">
+                            <tr>
+                                <td>{{greaterAttendance.name}} ({{isDecimal(greaterAttendance.percentage)}})</td>
+                                <td>{{lowerAttendance.name}} ({{isDecimal(lowerAttendance.percentage)}})</td>
+                                <td>{{largerCapacity.name}} ({{isDecimal(largerCapacity.percentage)}})</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <caption>Upcoming events statistics by category</caption>
+                        <thead>
+                            <tr>
+                                <th>Categories</th>
+                                <th>Revenues</th>
+                                <th>Percentage of attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table2">
+                            <template v-if="categories.length > 0" v-for="category of categories">
+                                <tr>
+                                    <td>{{category}}</td>
+                                    <td>${{isDecimal(valuesPerCategory(category, "upcoming").reveneus)}}</td>
+                                    <td>{{isDecimal(valuesPerCategory(category, "upcoming").attendance)}}%</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <caption>Past events statistic by category</caption>
+                        <thead>
+                            <tr>
+                                <th>Categories</th>
+                                <th>Revenues</th>
+                                <th>Percentage of attendance</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table3">
+                            <template v-if="categories.length > 0" v-for="category of categories">
+                                <tr>
+                                    <td>{{category}}</td>
+                                    <td>${{isDecimal(valuesPerCategory(category, "past").reveneus)}}</td>
+                                    <td>%{{isDecimal(valuesPerCategory(category, "past").attendance)}}</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="icons">
+                <img src="./assets/img/instagram.png" class="icon" alt="logo">
+                <img src="./assets/img/facebook.png" class="icon" alt="logo">
+                <img src="./assets/img/whatsapp.png" class="icon" alt="logo">
+            </div>
+            <h2>Cohort</h2>
+        </div>
+    </footer>
+    <script src="./assets/scripts/stats.js"></script>
+</body>
+
+</html>

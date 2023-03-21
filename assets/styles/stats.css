@@ -1,0 +1,39 @@
+.tables {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.tables table {
+  border-collapse: collapse;
+}
+
+.tables table caption,
+.tables table tr th,
+.tables table tr td {
+  border: 1px solid black;
+  border-bottom: none;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.tables table tr th,
+.tables table tr td {
+  width: 300px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.tables table caption {
+  font-size: 2rem;
+
+  background-color: rgb(160, 160, 160);
+}
+
+.tables table tr th {
+  font-size: 1.3rem;
+  background-color: lightgray;
+}

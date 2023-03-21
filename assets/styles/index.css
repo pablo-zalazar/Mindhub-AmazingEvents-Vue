@@ -1,0 +1,183 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* CARROUSEL */
+.carrousel {
+  width: 100%;
+  height: 50vw;
+  max-height: 500px;
+  position: relative;
+}
+
+.carrouse .containers {
+  width: 100%;
+  height: 100%;
+}
+
+.carrousel .containers img {
+  width: 100%;
+  height: 50vw;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carrousel .back,
+.carrousel .forward {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 17px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: top 0.5s ease;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carrousel .back {
+  left: 10px;
+}
+
+.carrousel .forward {
+  right: 10px;
+}
+
+.carrousel .back:hover,
+.carrousel .forward:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carrousel .back:active,
+.carrousel .forward:active {
+  top: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .carrousel .back,
+  .carrousel .forward {
+    top: 40%;
+  }
+}
+
+/* FILTERS */
+main .filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+main .filters .categories {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+main .filters .categories label {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+main .filters .categories label input {
+  border: 2px solid red;
+}
+
+main .filters .search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+main .filters .search input {
+  border: 1px solid lightgray;
+  width: 50vw;
+  max-width: 300px;
+  height: 2rem;
+  padding: 5px;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  main .filters {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+/* CARDS */
+.cardsContainer {
+  padding: 2rem;
+  align-self: center;
+  display: flex;
+  gap: 2rem;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cardsContainer > div:not([class]) {
+  border-radius: 0.5rem;
+  background-color: #999;
+}
+
+.card {
+  max-width: 300px;
+  height: 350px;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  transition: all 0.2s linear;
+}
+
+.card:hover {
+  transform: translateX(10px) translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+.card .cardInfo {
+  flex-grow: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .cardInfo div:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card .cardInfo div:nth-of-type(1) h2 {
+  text-align: center;
+}
+
+.card .cardInfo div:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .cardInfo div:nth-of-type(2) p {
+  font-size: 1.2rem;
+  font-weight: 700;
+}

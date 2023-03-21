@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets//img/festival.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <link rel="stylesheet" href="./assets/styles/footer.css">
+    <link rel="stylesheet" href="./assets/styles/index.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>upcoming Events</title>
+</head>
+
+<body>
+    <main>
+        <div id="app">
+            {{filter}}
+            <header class="header">
+                <nav>
+                    <img src="./assets/img/Logo_Amazing_Events.png" alt="logo">
+                    <div :class="showMenu ? 'show' : 'hidden'">
+                        <a href="./index.html">Home</a>
+                        <a class=" active" href="#">Upcoming
+                            Events</a>
+                        <a href="./pastEvents.html">Past Events</a>
+                        <a href="./contact.html">Contact</a>
+                        <a href="./stats.html">Stats</a>
+                    </div>
+                    <button class="burguer" v-on:click="changeMenu()">
+                        <img src="./assets/img/menu.jpg" alt="">
+                    </button>
+            </header>
+            <div class="carrousel">
+                <template v-if="slidePosition === 1">
+                    <div class="containers">
+                        <img src="./assets/img/carousel1.jpg">
+                    </div>
+                </template>
+
+                <template v-if="slidePosition === 2">
+                    <div class="containers">
+                        <img src="./assets/img/carousel2.jpg">
+                    </div>
+                </template>
+
+                <template v-if="slidePosition === 3">
+                    <div class="containers">
+                        <img src="./assets/img/carousel3.jpg">
+                    </div>
+                </template>
+                <a class="back" v-on:click="plusSlides(-1)">&#10094;</a>
+                <a class="forward" v-on:click="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <template v-if="categories">
+                <div class="filters">
+                    <div class="categories">
+                        <template v-for="category of categories">
+                            <label>{{category}}
+                                <input type="checkbox" v-model="checkeds" v-on:keyup="filter" :value="category">
+                            </label>
+                        </template>
+                    </div>
+                    <div class="search">
+                        <input type="text" v-model="searchValue" placeholder="search">
+                        <button class="push-button" v-on:click="resetSearch">Reset</button>
+                    </div>
+                </div>
+            </template>
+
+            <template v-if="filteredEvents">
+                <div class="cardsContainer">
+                    <template v-if="loading">
+                        <div class="loading">
+                            <div></div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <template v-if="filteredEvents.length > 0" v-for="event of filteredEvents">
+                            <div>
+                                <div class="card">
+                                    <img v-bind:src="event.image" :alt="event.name +'image'">
+                                    <div class="cardInfo">
+                                        <div>
+                                            <h2>{{event.name}}</h2>
+                                            <p>{{event.description}}</p>
+                                        </div>
+                                        <div>
+                                            <p>Price: ${{event.price}}</p>
+                                            <a class="push-button" :href="'./Details.html?id=' + event._id">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div class="center">
+                                <h2>No results</h2>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <div class="icons">
+                <img src="./assets/img/instagram.png" class="icon" alt="logo">
+                <img src="./assets/img/facebook.png" class="icon" alt="logo">
+                <img src="./assets/img/whatsapp.png" class="icon" alt="logo">
+            </div>
+            <h2>Cohort</h2>
+        </div>
+    </footer>
+    <script src="./assets/scripts/upcomingEvents.js"></script>
+</body>
+
+</html>

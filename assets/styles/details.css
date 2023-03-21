@@ -1,0 +1,78 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#app > div {
+  padding: 1rem auto;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100vw;
+  max-width: 1000px;
+  border-radius: 0.5rem;
+  justify-self: center;
+  display: flex;
+  background-color: #fff;
+}
+
+.card img {
+  width: 60%;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+
+.card .cardInfo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.card .cardInfo div:nth-of-type(1) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card .cardInfo div:nth-of-type(1) h2 {
+  text-align: center;
+}
+
+.card .cardInfo div:nth-of-type(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card .cardInfo div:nth-of-type(2) p {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+  #app > div {
+    padding: 1rem;
+  }
+
+  .card {
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #fff;
+  }
+
+  .card img {
+    max-height: 350px;
+    height: 100vw;
+    width: 100%;
+  }
+}
