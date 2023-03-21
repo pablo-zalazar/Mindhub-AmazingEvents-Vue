@@ -141,7 +141,7 @@ main .filters .search input {
 }
 
 .card:hover {
-  transform: translateX(10px) translateY(-10px);
+  transform: translateX(-10px) translateY(-10px);
 }
 
 .card img {
